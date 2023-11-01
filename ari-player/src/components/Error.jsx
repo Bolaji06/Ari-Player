@@ -1,7 +1,15 @@
 import React from 'react';
 
-const Error = () => (
-  <div>Error</div>
-);
+export default function Error ({ message }){
 
-export default Error;
+  return (
+    <>
+      <div className='w-full justify-center items-center'>
+        <h1 className='font-bold text-2xl text-white'>
+          {message}
+        </h1>
+
+      </div>
+    </> 
+  )
+}
