@@ -12,7 +12,8 @@ import 'swiper/css';
 import 'swiper/css/free-mode';
 import { useEffect, useRef } from 'react';
 
-function TopChartCard({ song, index}){
+function TopChartCard({ song, index, isPlaying, activeSong,
+   handlePauseClick, handlePlayClick}){
 
   return (
     <>
@@ -29,9 +30,14 @@ function TopChartCard({ song, index}){
             <Link to={`/artists/${song?.artists[0].adamid}`}>
               <p className='text-base text-gray-300 mt-1'>{song?.subtitle}</p>
             </Link>
-            
           </div>
         </div>
+        <PlayPause
+          isPlaying={isPlaying}
+          activeSong={activeSong}
+          song={song}
+          handlePause={handlePauseClick}
+          handlePlay={()=> handlePlayClick(song, index)}/>
 
 
       </div>
@@ -53,7 +59,7 @@ export default function TopPlay(){
   const topPlays = data?.tracks?.slice(0, 5);
 
 
-  function handlePlayClick(){
+  function handlePlayClick(song, index){
     dispatch(setActiveSong({ song, data, index}));
     dispatch(playPause(true));
  
@@ -84,7 +90,11 @@ export default function TopPlay(){
               return <TopChartCard
                 key={song.key}
                 song={song}
-                index={index}/>
+                index={index}
+                isPlaying={isPlaying}
+                activeSong={activeSong}
+                handlePauseClick={handlePauseClick}
+                handlePlayClick={handlePlayClick}/>
             })}
           </div>
         </div>
@@ -115,7 +125,7 @@ export default function TopPlay(){
                       className='shadow-lg rounded-full
                       animate-slideright scroll-smooth'> 
 
-                    <Link to={`/artist/${song?.artists[0].adamid}`}>
+                    <Link to={`/artists/${song?.artists[0].adamid}`}>
                       <img src={song?.images.background} alt="name"
                       className='rounded-full w-full object-cover'/>
                     </Link>
