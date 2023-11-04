@@ -20,7 +20,7 @@ export default function SongDetails(){
     //console.log(relatedSong);
 
 
-     console.log(songid);
+     //console.log(songid);
 
      if (isFetchingRelatedSongDetails || isFetchingSongDetails) return(
         <Loader title={"Searching song details"}/>
@@ -28,7 +28,7 @@ export default function SongDetails(){
      if (error) return <Error />
     
      function handlePlayClick(song, index){
-        dispatch(setActiveSong({ song, data, index}));
+        dispatch(setActiveSong({ song, index}));
         dispatch(playPause(true));
        }
      
