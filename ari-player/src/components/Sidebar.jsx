@@ -43,7 +43,7 @@ export default function Sidebar(){
         py-10 px-2 bg-slate-700">
         
          <NavLinks />
-          <img src={logo} alt="logo" className="w-full h-14 object-contain mt-10"/>
+          <img src={logo} alt="logo" className="w-full h-12 object-contain mt-10"/>
         </div>
       
 

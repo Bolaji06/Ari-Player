@@ -12,6 +12,7 @@ const Player = ({ activeSong, isPlaying, volume, seekTime, onEnded, onTimeUpdate
       ref.current.pause();
     }
   }
+  //console.log(activeSong)
 
   useEffect(() => {
     ref.current.volume = volume;
@@ -23,7 +24,7 @@ const Player = ({ activeSong, isPlaying, volume, seekTime, onEnded, onTimeUpdate
 
   return (
     <audio
-      src={activeSong?.hub?.actions[1]?.uri}
+      src={activeSong?.hub?.actions[1]?.uri ? activeSong?.hub?.actions[1]?.uri : activeSong?.streaming?.preview}
       ref={ref}
       loop={repeat}
       onEnded={onEnded}
