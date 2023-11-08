@@ -37,7 +37,6 @@ const playerSlice = createSlice({
         state.activeSong = state.currentSongs[action.payload]?.track;
       } else if (state.currentSongs[action.payload]?.data?.resources) {
         state.activeSong = state.currentSongs[action.payload]?.resources
-
       } 
       else {
         state.activeSong = state.currentSongs[action.payload];
@@ -50,7 +49,11 @@ const playerSlice = createSlice({
     prevSong: (state, action) => {
       if (state.currentSongs[action.payload]?.track) {
         state.activeSong = state.currentSongs[action.payload]?.track;
-      } else {
+      }
+      else if (state.currentSongs[action.payload]?.data?.resources) {
+        state.activeSong = state.currentSongs[action.payload]?.resources
+      } 
+      else {
         state.activeSong = state.currentSongs[action.payload];
       }
 
