@@ -4,13 +4,13 @@ import  SongBar  from './SongBar'
 export default function RelatedSongs({
   data, isPlaying, activeSong, handlePauseClick, handlePlayClick,artistId
 }){
-  //console.log(data?.resources?.['shazam-songs'])
+  
   const shazamRelatedSong = data?.resources?.['shazam-songs'];
-
-  console.log(Object.values(shazamRelatedSong).forEach((item) => console.log(item.attributes)));
+  //console.log(shazamRelatedSong);
 
   const relatedSongList = Object.values(shazamRelatedSong)
-
+  //console.log(relatedSongList)
+  
   return (
     <>
       <div className='flex flex-col'>
@@ -21,15 +21,17 @@ export default function RelatedSongs({
          
          {
           relatedSongList.map((song, index) => {
-           return <SongBar 
-            key={index}
-            song={song.attributes}
-            i={index}
-            handlePauseClick={handlePauseClick}
-            handlePlayClick={handlePlayClick}
-            activeSong={activeSong}
-            artistId={artistId}
-            />
+           return (
+
+              <SongBar 
+                key={index}
+                song={song.attributes}
+                i={index}
+                handlePauseClick={handlePauseClick}
+                handlePlayClick={handlePlayClick}
+                activeSong={activeSong}
+                artistId={artistId}
+              />)
           })
          }
         </div>

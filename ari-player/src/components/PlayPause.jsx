@@ -5,6 +5,7 @@ import { FaPauseCircle, FaPlayCircle} from "react-icons/fa"
 export default function PlayPause({ song, isPlaying, activeSong, handlePause,
 handlePlay}){
   
+  //console.log(song);
 
   return (
     <>

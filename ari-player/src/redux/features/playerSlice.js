@@ -20,7 +20,11 @@ const playerSlice = createSlice({
         state.currentSongs = action.payload.data.tracks.hits;
       } else if (action.payload?.data?.properties) {
         state.currentSongs = action.payload?.data?.tracks;
-      } else {
+       }
+      else if (action.payload?.data?.resources) {
+        state.currentSongs = Object.values(action.payload?.data?.resources?.['shazam-songs'])
+      }
+      else {
         state.currentSongs = action.payload.data;
       }
 
@@ -31,7 +35,10 @@ const playerSlice = createSlice({
     nextSong: (state, action) => {
       if (state.currentSongs[action.payload]?.track) {
         state.activeSong = state.currentSongs[action.payload]?.track;
-      } else {
+      } else if (state.currentSongs[action.payload]?.data?.resources) {
+        state.activeSong = state.currentSongs[action.payload]?.resources
+      } 
+      else {
         state.activeSong = state.currentSongs[action.payload];
       }
 
@@ -42,7 +49,11 @@ const playerSlice = createSlice({
     prevSong: (state, action) => {
       if (state.currentSongs[action.payload]?.track) {
         state.activeSong = state.currentSongs[action.payload]?.track;
-      } else {
+      }
+      else if (state.currentSongs[action.payload]?.data?.resources) {
+        state.activeSong = state.currentSongs[action.payload]?.resources
+      } 
+      else {
         state.activeSong = state.currentSongs[action.payload];
       }
 

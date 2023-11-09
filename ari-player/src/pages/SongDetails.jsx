@@ -17,7 +17,7 @@ export default function SongDetails(){
     const { data: relatedSong, isFetching: isFetchingRelatedSongDetails, error} =
     useGetRelatedSongsQuery({ songid });
 
-    //console.log(relatedSong);
+    console.log(songid);
 
 
      //console.log(songid);

@@ -21,7 +21,7 @@ import { createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react"
         baseQuery: fetchBaseQuery({
             baseUrl: "https://shazam.p.rapidapi.com",
             prepareHeaders: (headers) => {
-                headers.set("X-RapidAPI-Key", "6914218c0fmshd18c6ef6d0592a4p1a6104jsn25df1ef2bcb4");
+                headers.set("X-RapidAPI-Key", "c089a77bafmsh73eb5bb4fe3c91dp15c62cjsnc8fa9946dab5");
                 return headers;
             },
         }),
@@ -29,7 +29,9 @@ import { createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react"
             getTopCharts: builder.query({ query: () => "/charts/track" }),
             getSongDetails: builder.query({ query: ({ songid }) => `/songs/get-details?key=${songid}`}),
             getRelatedSongs: builder.query({ query: ({ songid }) => `/shazam-songs/list-similarities?id=track-similarities-id-${songid}`}),
-        }),
+            getArtistsDetails: builder.query({ query: (artistId) => `/artists/get-details?id=${artistId}`}),
+            getAlbumDetails: builder.query({ query: (albumId) => `/albums/get-details?id=${albumId}`}),
+        }), 
     })
-    export const 
-    { useGetTopChartsQuery, useGetSongDetailsQuery, useGetRelatedSongsQuery }  = shazamCoreApi;
+    export const { useGetTopChartsQuery, useGetSongDetailsQuery,
+         useGetRelatedSongsQuery, useGetArtistsDetailsQuery, useGetAlbumDetailsQuery }  = shazamCoreApi;
