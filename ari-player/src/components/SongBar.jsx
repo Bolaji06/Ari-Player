@@ -10,7 +10,7 @@ const SongBar = ({ song, i, artistId, isPlaying, activeSong, handlePauseClick, h
     <div className="flex-1 flex flex-row justify-between items-center">
       <img
         className="w-20 h-20 rounded-lg"
-        src={artistId ? song?.images?.artistAvatar : song?.images?.coverArt}
+        src={artistId ? song?.images?.artistAvatar : song?.images?.coverArt || song?.images?.coverart}
         alt={song?.title}
       />
       <div className="flex-1 flex flex-col justify-center mx-3 cursor-pointer hover:decoration-slate-500">
@@ -26,7 +26,7 @@ const SongBar = ({ song, i, artistId, isPlaying, activeSong, handlePauseClick, h
           </p>
         )}
         <p className="text-base text-gray-300 mt-1">
-          {artistId ? song?.attributes?.albumName : song?.artist}
+          {artistId ? song?.attributes?.albumName : song?.artist || song?.subtitle}
         </p>
       </div>
     </div>

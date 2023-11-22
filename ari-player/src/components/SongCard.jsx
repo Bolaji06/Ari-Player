@@ -25,11 +25,11 @@ export default function SongCard({ song, index, activeSong, isPlaying, data }){
 
   return (
     <>
-      <div className="flex flex-col w-[250px] p-4 bg-white/5
+      <div className="flex flex-col lg:w-[250px] w-[180px]  p-4 bg-white/5
       bg-opacity-80 backdrop-blur-sm rounded-lg
       cursor-pointer pulse">
 
-        <div className="relative w-full h-56 group">
+        <div className="relative w-full lg:h-56 sm:h-[150px] group">
           <div className={`absolute inset-0 justify-center items-center
           bg-black bg-opacity-50 group-hover:flex ${activeSong?.title
           === song.title ? 'flex bg-black bg-opacity-70' : 'hidden'}`}>
@@ -42,18 +42,18 @@ export default function SongCard({ song, index, activeSong, isPlaying, data }){
             activeSong={activeSong}/>
 
           </div>
-          <img src={song.images?.coverart} alt="Cover Image" />
+          <img src={song.images?.coverart || song.images.default} alt="Cover Image" />
         </div>
         <div className="mt-4 flex flex-col">
-          <p className="font-semibold text-lg text-white truncate">
+          <p className="font-semibold text-base lg:text-lg text-white truncate hover:underline">
             <Link to={`/songs/${song?.key}`}>
-              {song.title}
+              {song.title || song.heading.title}
             </Link>
           </p>
-          <p className="text-sm truncate text-gray-300 mt-1">
+          <p className="text-sm truncate text-gray-300 mt-1 hover:underline">
             <Link to={song.artists ? `/artists/${song?.artists[0]
             ?.adamid}` : '/top-artists'}>
-              {song.subtitle}
+              {song.subtitle || song.heading.subtitle}
             </Link>
           </p>
 

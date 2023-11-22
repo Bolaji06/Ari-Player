@@ -30,8 +30,7 @@ export default function ArtistDetails(){
    const textColor3 = artwork?.textColor3;
    const textColor4 = artwork?.textColor4;
 
-    const albumList = artistsData?.data[0].relationships?.albums?.data[0].id;
-    //console.log(albumList);
+   const albumList = artistsData?.data[0]?.relationships?.albums?.data
   
    const artsistName = artist?.name
    const genreNames = artist?.genreNames[0];
@@ -60,7 +59,8 @@ export default function ArtistDetails(){
            gap-2">
                  <AlbumCard
                   albumList={albumList}
-                  artistBgImage={artistBgImage} />
+                  artistBgImage={artistBgImage}
+                  />
             
           </div>
          

@@ -10,46 +10,8 @@ export default function AlbumCard({ artistBgImage, albumList }){
     const [albumTitle, setAlbumTitle] = useState("");
     const [subtitle, setSubtitle] = useState("");
     const [isLoading, setIsLoading] = useState(true);
+    const [albumData, setAlbumData] = useState([]);
 
-    //console.log(albumImage);
-    const { data: albumDetailsData, isFetching: isFetchingAlbumDetailsData, error} = useGetAlbumDetailsQuery(albumList);
-
-     const cardData = albumDetailsData?.data[0]?.attributes
-     console.log(cardData)
-
-    useEffect(()=>{
-
-        if (isFetchingAlbumDetailsData){
-            setIsLoading(true);
-            console.log("Loading...");
-             <Loader title="Loading Album Details"/>
-        }
-        else if (error){
-            setIsLoading(false);
-            console.log("Error...");
-            <Error /> 
-        } 
-    
-        else if (albumDetailsData){
-            const image = cardData?.artwork?.url.replace('{w}', 2000).replace('{h}', 2000);
-            setAlbumImage(image);
-            const title = cardData?.name;
-            setAlbumTitle(title);
-            const artistName = cardData?.artistName;
-            setSubtitle(artistName);
-
-
-            setIsLoading(false);
-        }
-        
-    }, [albumDetailsData, isFetchingAlbumDetailsData, error])
-   
-    
-
-
-if (isLoading) {
-    <Loader title={"Loading..."}/>
-}
 
     return (
         <>
